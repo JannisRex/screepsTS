@@ -1,3 +1,4 @@
+/// <reference path="..\node_modules\@types\screeps\index.d.ts" />
 import { ErrorMapper } from 'utils/ErrorMapper'
 
 declare global {
