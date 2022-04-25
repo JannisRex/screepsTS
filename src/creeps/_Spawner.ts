@@ -56,6 +56,8 @@ export class CreepSpawner implements Spawner {
   }
 
   private canSpawnCreep(cost: number): boolean {
+    // check for cost
+    // check if spawn is busy
     return true
   }
 
@@ -68,7 +70,7 @@ export class CreepSpawner implements Spawner {
   ): void {
     // If unable to spawn, return
     let partsCost = this.spawnCost(parts)
-    if (this.canSpawnCreep(partsCost)) {
+    if (!this.canSpawnCreep(partsCost)) {
       return
     }
 
@@ -89,14 +91,14 @@ export class CreepSpawner implements Spawner {
     let name = null
     while (name === null) {
       nameCount = nameCount + 1
-      let tempName = role + ' ' + nameCount
+      let tempName = role + ' #' + nameCount
       if (Game.creeps[tempName] === undefined) {
         name = tempName
       }
     }
 
-    console.log('Spawning ' + name + '...')
     if (spawn.spawnCreep(parts, name, { memory, dryRun: true }) === OK) {
+      console.log('Spawning ' + name + '...')
       spawn.spawnCreep(parts, name, { memory })
     }
   }
