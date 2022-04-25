@@ -1,5 +1,6 @@
 /// <reference path="..\node_modules\@types\screeps\index.d.ts" />
 import { ErrorMapper } from 'utils/ErrorMapper'
+import { CreepSpawner } from 'creeps/_Spawner'
 
 declare global {
   /*
@@ -43,6 +44,8 @@ function clearDeadCreeps() {
 // This utility uses source maps to get the line numbers and file names of the original, TS source code
 export const loop = ErrorMapper.wrapLoop(() => {
   console.log(`Current game tick is ${Game.time}`)
+
+  // ["WORK", "CARRY", "MOVE"]
 
   clearDeadCreeps()
 })
